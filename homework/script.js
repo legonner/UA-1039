@@ -8,7 +8,13 @@ const createArray = (start, end) => Array.from({ length: end - start + 1 }, (_, 
 
 // task 3 | Print Range with Repetition
 
-const printRange = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => Array(i + 1).fill(start + i)).flat(1);
+const printRange = (start, end) => {
+    const result = [];
+    for (let i = start; i <= end; i++) {
+      result.push(...Array(i - start + 1).fill(i));
+    }
+    return result;
+  };
 
 // task 4 | Generate Random Array
 
@@ -27,10 +33,16 @@ const groupDataTypes = (arr) => {
 // task 6 | Arithmetic Operator
 
 const calc = (a, b, op) => {
-    return op === 1 ? a - b :
-           op === 2 ? a * b :
-           op === 3 ? (b !== 0 ? a / b : 'Error: Division by zero') :
-           a + b;
+    if (typeof a !== 'number' || typeof b !== 'number')
+      throw new Error('Both inputs must be numbers');
+  
+    const operations = {
+      1: a - b,
+      2: a * b,
+      3: b !== 0 ? a / b : new Error('Division by zero is not allowed'),
+    };
+  
+    return operations[op] || a + b;
   };
   
 // task 7 | Check Uniqueness
