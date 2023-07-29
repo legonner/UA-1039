@@ -45,7 +45,7 @@ const sumSliceArray = (arr, first, second) => {
   const checkAge = async () => {
     const name = prompt("Please enter your name:").trim();
     const age = +prompt("Please enter your age:");
-    const status = prompt("Please enter your status (admin, moderator or user):").trim();
+    const status = prompt("Please enter your status (admin, moderator or user):").trim().toLowerCase();
   
     validateAgeInput(name, age, status);
     return { name, age, status };
@@ -122,12 +122,12 @@ const sumSliceArray = (arr, first, second) => {
   
   // task 5 | Validate and Retrieve User IDs
   
-  function showUser(id) {
+  const showUser = (id) => {
     if (id < 0) throw new Error(`ID must not be negative: ${id}`);
     return { id };
   }
   
-  function showUsers(ids) {
+  const showUsers = (ids) => {
     const validUsers = [];
     ids.forEach(id => {
       try {
@@ -138,4 +138,3 @@ const sumSliceArray = (arr, first, second) => {
     });
     return validUsers;
   }
-  
