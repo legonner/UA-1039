@@ -38,14 +38,14 @@ const sumSliceArray = (arr, first, second) => {
       throw new RangeError("You are not within the allowed age range to watch the movie.");
     }
     if (!["admin", "moderator", "user"].includes(status)) {
-      throw new EvalError("Invalid status. Please enter either 'admin', 'moderator', or 'user'.");
+      throw new EvalError("Invalid status. Please enter either 'admin', 'moderator' or 'user'.");
     }
   };
   
   const checkAge = async () => {
     const name = prompt("Please enter your name:").trim();
     const age = +prompt("Please enter your age:");
-    const status = prompt("Please enter your status (admin, moderator, or user):").trim();
+    const status = prompt("Please enter your status (admin, moderator or user):").trim();
   
     validateAgeInput(name, age, status);
     return { name, age, status };
