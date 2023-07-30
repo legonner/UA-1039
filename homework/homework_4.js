@@ -1,8 +1,8 @@
 // task 1 | Array Index Sum
 
 const sumSliceArray = (arr, first, second) => {
-    if (!Array.isArray(arr)) {
-      throw new Error('The first argument must be an array.');
+    if (!Array.isArray(arr) || arr.length === 0) {
+      throw new Error('The first argument must be a non-empty array.');
     }
     if (!Number.isInteger(first) || !Number.isInteger(second)) {
       throw new Error('The second and third arguments must be integers.');
@@ -25,27 +25,24 @@ const sumSliceArray = (arr, first, second) => {
   // task 2 | Movie Access Control
   
   const validateAgeInput = (name, age, status) => {
-    if (name === null || name === "") {
+    if (!name || !name.trim()) {
       throw new Error("The field is empty! Please enter your name.");
     }
-    if (!age && age !== 0) {
-      throw new Error("The field is empty! Please enter your age.");
-    }
-    if (isNaN(age)) {
-      throw new EvalError("Invalid age value. Please enter a numeric value.");
+    if (!Number.isFinite(age)) {
+      throw new Error("Invalid age value. Please enter a valid numeric age.");
     }
     if (age < 18 || age > 70) {
       throw new RangeError("You are not within the allowed age range to watch the movie.");
     }
-    if (!["admin", "moderator", "user"].includes(status)) {
+    if (!status || !["admin", "moderator", "user"].includes(status.trim().toLowerCase())) {
       throw new EvalError("Invalid status. Please enter either 'admin', 'moderator' or 'user'.");
     }
   };
   
   const checkAge = async () => {
-    const name = prompt("Please enter your name:").trim();
+    const name = prompt("Please enter your name:");
     const age = +prompt("Please enter your age:");
-    const status = prompt("Please enter your status (admin, moderator or user):").trim().toLowerCase();
+    const status = prompt("Please enter your status (admin, moderator or user):");
   
     validateAgeInput(name, age, status);
     return { name, age, status };
@@ -53,7 +50,7 @@ const sumSliceArray = (arr, first, second) => {
   
   checkAge()
     .then((userData) => {
-      alert(`Hello ${userData.name}! Enjoy watching movies!`);
+      alert(`Hello ${userData.name.trim()}! Enjoy watching movies!`);
     })
     .catch((error) => {
       alert(`Error: ${error.name} - ${error.message}`);
@@ -62,14 +59,11 @@ const sumSliceArray = (arr, first, second) => {
   // task 3 | Rectangle Area Calculator
   
   const isRectangleValid = (width, height) => {
-    if (typeof width !== 'number' || typeof height !== 'number') {
-      throw new Error('Both width and height must be numbers.');
+    if (!Number.isFinite(width) || !Number.isFinite(height)) {
+        throw new Error('Both width and height must be numbers.');
     }
     if (width <= 0 || height <= 0) {
       throw new RangeError("Invalid input value. Please enter a numeric value bigger than zero.");
-    }
-    if (isNaN(width) || isNaN(height)) {
-      throw new EvalError("Invalid input value. Please enter a numeric value.");
     }
   };
   
