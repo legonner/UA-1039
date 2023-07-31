@@ -4,6 +4,9 @@ const sumSliceArray = (arr, first, second) => {
     if (!Array.isArray(arr) || arr.length === 0) {
       throw new Error('The first argument must be a non-empty array.');
     }
+    if (first === second) {
+        throw new Error('The provided indices must be different.');
+    }
     if (!Number.isInteger(first) || !Number.isInteger(second)) {
       throw new Error('The second and third arguments must be integers.');
     }
@@ -25,7 +28,7 @@ const sumSliceArray = (arr, first, second) => {
   // task 2 | Movie Access Control
   
   const validateAgeInput = (name, age, status) => {
-    if (!name || !name.trim()) {
+    if (!name.trim()) {
       throw new Error("The field is empty! Please enter your name.");
     }
     if (!Number.isFinite(age)) {
@@ -94,9 +97,6 @@ const sumSliceArray = (arr, first, second) => {
   ];
   
   const validateMonthInput = (month) => {
-    if (typeof month !== 'number' || Number.isNaN(month)) {
-      throw new MonthException('A non-numeric value was entered');
-    }
     if (!Number.isInteger(month) || month < 1 || month > 12) {
       throw new MonthException('Incorrect month number');
     }
