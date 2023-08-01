@@ -1,3 +1,5 @@
+'use strict';
+
 // task 1 | Array Index Sum
 
 const sumSliceArray = (arr, first, second) => {
@@ -29,23 +31,23 @@ const sumSliceArray = (arr, first, second) => {
   
   const validateAgeInput = (name, age, status) => {
     if (!name.trim()) {
-      throw new Error("The field is empty! Please enter your name.");
+      throw new Error('The field is empty! Please enter your name.');
     }
     if (!Number.isFinite(age)) {
-      throw new Error("Invalid age value. Please enter a valid numeric age.");
+      throw new Error('Invalid age value. Please enter a valid numeric age.');
     }
     if (age < 18 || age > 70) {
-      throw new RangeError("You are not within the allowed age range to watch the movie.");
+      throw new RangeError('You are not within the allowed age range to watch the movie.');
     }
-    if (!status || !["admin", "moderator", "user"].includes(status.trim().toLowerCase())) {
-      throw new EvalError("Invalid status. Please enter either 'admin', 'moderator' or 'user'.");
+    if (!status || !['admin', 'moderator', 'user'].includes(status.trim().toLowerCase())) {
+      throw new EvalError('Invalid status. Please enter either "admin", "moderator" or "user".');
     }
   };
   
   const checkAge = async () => {
-    const name = prompt("Please enter your name:");
-    const age = +prompt("Please enter your age:");
-    const status = prompt("Please enter your status (admin, moderator or user):");
+    const name = prompt('Please enter your name:');
+    const age = +prompt('Please enter your age:');
+    const status = prompt('Please enter your status (admin, moderator or user):');
   
     validateAgeInput(name, age, status);
     return { name, age, status };
@@ -66,7 +68,7 @@ const sumSliceArray = (arr, first, second) => {
         throw new Error('Both width and height must be numbers.');
     }
     if (width <= 0 || height <= 0) {
-      throw new RangeError("Invalid input value. Please enter a numeric value bigger than zero.");
+      throw new RangeError('Invalid input value. Please enter a numeric value bigger than zero.');
     }
   };
   
