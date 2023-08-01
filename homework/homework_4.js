@@ -119,11 +119,17 @@ const sumSliceArray = (arr, first, second) => {
   // task 5 | Validate and Retrieve User IDs
   
   const showUser = (id) => {
-    if (id < 0) throw new Error(`ID must not be negative: ${id}`);
+    if (id < 0 || id > 255) {
+      throw new Error(`Invalid ID: ID must not be negative or exceed 255: ${id}`);
+    }
     return { id };
   }
   
   const showUsers = (ids) => {
+    if (!Array.isArray(ids)) {
+      throw new Error("Input must be an array of IDs");
+    }
+  
     const validUsers = [];
     ids.forEach(id => {
       try {
@@ -134,3 +140,5 @@ const sumSliceArray = (arr, first, second) => {
     });
     return validUsers;
   }
+
+  console.log(showUsers([7, -12, 44, 22]))
