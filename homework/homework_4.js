@@ -2,20 +2,30 @@
 
 // task 1 | Array Index Sum
 
-const sumSliceArray = (arr, first, second) => {
+const validateArguments = (arr, first, second) => {
     if (!Array.isArray(arr) || arr.length === 0) {
       throw new Error('The first argument must be a non-empty array.');
     }
-    if (first === second) {
-        throw new Error('The provided indices must be different.');
-    }
+
     if (!Number.isInteger(first) || !Number.isInteger(second)) {
-      throw new Error('The second and third arguments must be integers.');
+        throw new Error('The second and third arguments must be integers.');
     }
+  
+    if (first === second) {
+      throw new Error('The provided indices must be different.');
+    }
+  
     if (first < 0 || first >= arr.length || second < 0 || second >= arr.length) {
       throw new Error('The provided indices are outside the array bounds.');
     }
   
+    if (!Number.isFinite(arr[first]) || !Number.isFinite(arr[second])) {
+      throw new Error('Array elements with different data types are added');
+    }
+  };
+  
+  const sumSliceArray = (arr, first, second) => {
+    validateArguments(arr, first, second);
     return arr[first] + arr[second];
   };
   
@@ -33,12 +43,15 @@ const sumSliceArray = (arr, first, second) => {
     if (!name.trim()) {
       throw new Error('The field is empty! Please enter your name.');
     }
+
     if (!Number.isFinite(age)) {
       throw new Error('Invalid age value. Please enter a valid numeric age.');
     }
+
     if (age < 18 || age > 70) {
       throw new RangeError('You are not within the allowed age range to watch the movie.');
     }
+
     if (!status || !['admin', 'moderator', 'user'].includes(status.trim().toLowerCase())) {
       throw new EvalError('Invalid status. Please enter either "admin", "moderator" or "user".');
     }
@@ -67,6 +80,7 @@ const sumSliceArray = (arr, first, second) => {
     if (!Number.isFinite(width) || !Number.isFinite(height)) {
         throw new Error('Both width and height must be numbers.');
     }
+    
     if (width <= 0 || height <= 0) {
       throw new RangeError('Invalid input value. Please enter a numeric value bigger than zero.');
     }
