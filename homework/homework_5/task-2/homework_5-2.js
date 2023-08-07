@@ -1,29 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('h1');
-    header.style.fontSize = '32px';
+  const header = document.querySelector('h1');
+  header.style.backgroundColor = 'lime';
 
-    const divParagraphs = document.querySelectorAll('#myDiv p');
-    const numberedDiv = document.createElement('ol');
-    
-    divParagraphs.forEach(paragraph => {
-      const listItem = document.createElement('li');
-      listItem.textContent = paragraph.textContent;
-      numberedDiv.appendChild(listItem);
-    });
-  
-    const myDiv = document.querySelector('#myDiv');
-    myDiv.innerHTML = '';
-    myDiv.appendChild(numberedDiv);
-  
-    const list = document.querySelector('#myList');
-    list.style.display = 'flex';
-    list.style.listStyleType = 'none';
-  
-    document.querySelectorAll('#myList li').forEach(item => {
-      item.style.marginRight = '10px';
-    });
-  
-    const invisibleSpan = document.querySelector('span');
-    invisibleSpan.style.display = 'none';
+  const firstParagraph = document.querySelector('#myDiv p:nth-child(1)');
+  firstParagraph.style.fontWeight = 'bold';
+
+  const secondParagraph = document.querySelector('#myDiv p:nth-child(2)');
+  secondParagraph.style.color = 'red';
+
+  const thirdParagraph = document.querySelector('#myDiv p:nth-child(3)');
+  thirdParagraph.style.textDecoration = 'underline';
+
+  const fourthParagraph = document.querySelector('#myDiv p:nth-child(4)');
+  fourthParagraph.style.fontStyle = 'italic';
+
+  const list = document.querySelector('#myList');
+  list.style.display = 'flex';
+  list.style.listStyleType = 'none';
+
+  document.querySelectorAll('#myList li').forEach(item => {
+    item.style.marginRight = '5px';
   });
-  
+
+  const invisibleSpan = document.querySelector('span');
+  invisibleSpan.style.display = 'none';
+});
